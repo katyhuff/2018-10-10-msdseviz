@@ -1,0 +1,197 @@
+\documentclass{article}
+
+\usepackage[acronym,toc]{glossaries}
+\include{acros}
+
+\makeglossaries
+
+
+\usepackage{lineno}
+\usepackage{xspace}
+
+%%%% packages and definitions (optional)
+\usepackage{placeins}
+\usepackage{booktabs} % nice rules (thick lines) for tables
+\usepackage{microtype} % improves typography for PDF
+\usepackage{hhline}
+\usepackage{amsmath}
+
+%\usepackage[demo]{graphicx}
+%\usepackage{caption}
+%\usepackage{subcaption}
+
+\usepackage{booktabs}
+\usepackage{threeparttable, tablefootnote}
+
+\usepackage{tabularx}
+\newcolumntype{b}{>{\hsize=1.0\hsize}X}
+\newcolumntype{s}{>{\hsize=.5\hsize}X}
+\newcolumntype{m}{>{\hsize=.75\hsize}X}
+\newcolumntype{x}{>{\hsize=.25\hsize}X}
+
+
+% tikz %
+\usepackage{tikz}
+\usetikzlibrary{positioning, arrows, decorations, shapes}
+
+\usetikzlibrary{shapes.geometric,arrows}
+\tikzstyle{process} = [rectangle, rounded corners, minimum width=3cm, minimum height=1cm,text centered, draw=black, fill=blue!30]
+\tikzstyle{object} = [ellipse, rounded corners, minimum width=3cm, minimum height=1cm,text centered, draw=black, fill=green!30]
+\tikzstyle{arrow} = [thick,->,>=stealth]
+
+% Cyclus
+\newcommand{\Cyclus}{\textsc{Cyclus}\xspace}%
+
+% hyperref %
+\usepackage[hidelinks]{hyperref}
+
+\begin{document}
+\title{Workshopping Figures and Visualizations}
+\author{Kathryn D. Huff$^{1}$\\
+        $^{1}$Dept. of Nuclear, Plasma, and Radiological Engineering, \\
+University of Illinois at Urbana-Champaign, \\
+Urbana, IL}
+
+\date{}
+\maketitle 
+These plots are the result of hard work from three PhD students: Jin Whan Bae, Gwendolyn 
+Chee, and Andrei Rykhlevskii.
+
+\section*{Recycling Fuel in a Molten Salt Breeder Reactor \cite{rykhlevskii_modeling_2018}}
+
+\textbf{PhD student Andrei Rykhlevskii ran long time scale depletion (neutron 
+transport) and online reprocessing (fancy chemistry) calculations to determine 
+the equilibrium composition of the nuclear fuel and other characteristics in a 
+particular molten salt reactor design from the 70s.} 
+
+Figure~\ref{fig:breeding_den} shows the neutron capture reaction rate
+distribution for $^{232}$Th normalized by the total neutron flux for initial
+and equilibrium states. The distribution reflects the spatial distribution of
+$^{233}$Th production in the core. The thorium-232 then $\beta$-decays to
+$^{233}$Pa, which is the precursor for $^{233}$U production. Accordingly, this
+characteristic represents the breeding distribution in the \gls{MSBR} core.
+Spectral shift does not cause significant changes in power nor in breeding
+distribution. Even after 20 years of operation, most of the power is still
+generated in zone I and the majority of $^{233}$Th is
+produced in zone II.
+
+\begin{figure}[ht!] % replace 't' with 'b' to force it to \centering
+  \includegraphics[width=\textwidth]{power_distribution_eq.png}
+  \caption{Normalized power density for equilibrium fuel salt
+  composition.}
+  \label{fig:pow_den}
+\end{figure}
+\begin{figure}[ht!] % replace 't' with 'b' to force it to \centering
+  \includegraphics[width=\textwidth]{breeding_distribution_eq.png}
+  \caption{$^{232}$Th neutron capture reaction rate normalized by total flux
+  for equilibrium fuel salt composition.}
+  \label{fig:breeding_den}
+\end{figure}
+
+In a \gls{MSBR} reprocessing scheme, the only external feed material flow  is
+$^{232}$Th. Figure~\ref{fig:th_refill} shows the $^{232}$Th feed rate
+calculated for 60 years of reactor operation. The $^{232}$Th feed rate
+fluctuates significantly as a result of the batch-wise nature of this online
+reprocessing approach. For example, the large spikes of up to 36 kg/day in a
+thorium consumption occurs every 3435 days. This is required due to batch-wise
+removal of strong absorbers (Rb, Sr, Cs, Ba). The corresponding effective
+multiplication factor increase (Figure~\ref{fig:keff}) and breeding
+intensification leads to additional $^{232}$Th consumption.
+
+\begin{figure}[ht!] % replace 't' with 'b' to force it to \centering
+  \includegraphics[width=\textwidth]{Th_refill_rate.png} \caption{$^{232}$Th
+  feed rate over 60 years of \gls{MSBR} operation.}
+  \label{fig:th_refill}
+\end{figure}
+
+\FloatBarrier
+\section*{Benchmarking : Agent-Based Simulation more Informative than Spreadsheets \cite{bae_standardized_2018}}
+\textbf{MS student Jin Whan Bae compared an agent based fuel cycle simulator 
+        with estimates from a spreadsheet (via DOE). The rich, discrete 
+        facility and discrete material information available from the agent 
+based simulation captures dynamics that the benchmark was forced to approximate 
+at the fleet level.}
+
+A code-to-code benchmarking exercise postulated a nuclear fuel cycle transition 
+from current reactors to new ones. 
+Figure \ref{fig:waiting_monthly} shows the amount of cooled \gls{UNF} waiting 
+for
+reprocessing. The value is calculated by subtracting the cumulative difference 
+between
+the cooled inventory and the \gls{UNF} reprocessing throughput.
+The oscillation is between the cooled inventory in the storage facility before 
+(high)
+and after (low) it sends its inventory for reprocessing.
+
+Figure \ref{fig:rep} shows the reprocessing throughput, which oscillates around
+the benchmark solution. No oscillation exists in the beginning because the
+\gls{LWR} \gls{UNF} reprocessing plant throughput peaks at 2,000 tons per year.
+
+
+\begin{figure}[htbp!]
+    \begin{center}
+            \includegraphics[width=\textwidth]{./fuel_discharge_monthly.png}
+    \end{center}
+        \caption{Inventory of discharged \gls{UNF} in mandatory cooling storage.}
+    \label{fig:fuel_discharge_monthly}
+\end{figure}
+
+
+\begin{figure}[htbp!]
+    \begin{center}
+            \includegraphics[width=\textwidth]{./waiting_monthly.png}
+    \end{center}
+        \caption{Inventory of discharged and cooled \gls{UNF} waiting for reprocessing.}
+    \label{fig:waiting_monthly}
+\end{figure}
+
+
+\begin{figure}[htbp!]
+    \begin{center}
+            \includegraphics[width=\textwidth]{./rep.png}
+    \end{center}
+        \caption{Annual reprocessing throughputs.}
+    \label{fig:rep}
+\end{figure}
+
+\FloatBarrier
+\section*{Validating a Predictive Simulator by Predicting the Past \cite{chee_validation_2018}}
+
+\textbf{PhD student Gwendolyn Chee sought to validate our predictive nuclear 
+fuel cycle simulator by predicting the past. That is, she set up a simulation 
+with initial conditions reflecting our US nuclear reactor fleet and used the 
+Cyclus simulator to determine the cumulative isotopics of US spent fuel over 
+the last many decades. She compared this to a database holding the DOE's best 
+guess (using high fidelity calculations of each reactor) at the same data.}
+
+Figures \ref{fig:absolute_diff_all_51} and \ref{fig:absolute_diff_all_33} show
+the cumulative nuclear spent fuel isotopic mass difference between \gls{UNFSTANDARDS} 
+\gls{UDB} and simulated \Cyclus data
+in 5 year intervals for burnup of 51 GWD/MTU and 33 GWD/MTU correspondingly.
+The \Cyclus data that assumed 33 GWD/MTU burnup deviated less than the
+\Cyclus data that assumed 51 GWD/MTU burnup. This is apparent for $^{236}$U,
+$^{242}$Pu and $^{240}$Pu. They are similar for the isotopes on the left side
+of both figures. With an exception of $^{239}$Pu having a substantially larger
+difference for 33 GWD/MTU than 51 GWD/MTU.
+
+\begin{figure}[htb] % replace 't' with 'b' to force it to be on the bottom
+    \centering
+        \includegraphics[height=0.30\textheight]{absolute_diff_all_51}
+        \caption{The absolute difference between spent fuel mass calculated by 
+        \gls{UNFSTANDARDS} \gls{UDB} and \Cyclus for each isotope for 51 GWD/MTU burnup. Positive difference indicates \Cyclus mass estimate is larger.}
+    \label{fig:absolute_diff_all_51}
+\end{figure}
+
+\begin{figure}[htb] % replace 't' with 'b' to force it to be on the bottom
+        \includegraphics[height=0.30\textheight]{absolute_diff_all_33}
+        \caption{The absolute difference between spent fuel mass calculated by \gls{UNFSTANDARDS} \gls{UDB} and \Cyclus for each isotope for 33 GWD/MTU burnup. Positive difference indicates \Cyclus mass estimate is larger.}
+        \label{fig:absolute}
+\end{figure}
+
+
+
+\FloatBarrier
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\bibliographystyle{plain}
+\bibliography{2018-huff-msdseviz}
+\end{document}
