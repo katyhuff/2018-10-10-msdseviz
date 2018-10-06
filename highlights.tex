@@ -54,7 +54,8 @@ Urbana, IL}
 
 \date{}
 \maketitle 
-These plots are the result of hard work from three PhD students: Jin Whan Bae, Gwendolyn 
+These plots resulted from the hard work of three graduate students in the 
+Advanced Reactors and Fuel Cycles group: Jin Whan Bae, Gwendolyn 
 Chee, and Andrei Rykhlevskii.
 
 \section*{Recycling Fuel in a Molten Salt Breeder Reactor \cite{rykhlevskii_modeling_2018}}
@@ -63,6 +64,13 @@ Chee, and Andrei Rykhlevskii.
 transport) and online reprocessing (fancy chemistry) calculations to determine 
 the equilibrium composition of the nuclear fuel and other characteristics in a 
 particular molten salt reactor design from the 70s.} 
+
+Figure~\ref{fig:pow_den} reflects the
+normalized power distribution of the \gls{MSBR} quarter core, which is the same
+at both the initial and equilibrium states. For both the initial and equilibrium compositions, fission
+primarily occurs in the center of the core, namely zone I. The spectral shift
+during reactor operation results in different power fractions at startup and
+equilibrium, but most of the power is still generated in zone I at equilibrium.
 
 Figure~\ref{fig:breeding_den} shows the neutron capture reaction rate
 distribution for $^{232}$Th normalized by the total neutron flux for initial
@@ -95,7 +103,7 @@ fluctuates significantly as a result of the batch-wise nature of this online
 reprocessing approach. For example, the large spikes of up to 36 kg/day in a
 thorium consumption occurs every 3435 days. This is required due to batch-wise
 removal of strong absorbers (Rb, Sr, Cs, Ba). The corresponding effective
-multiplication factor increase (Figure~\ref{fig:keff}) and breeding
+multiplication factor increase and breeding
 intensification leads to additional $^{232}$Th consumption.
 
 \begin{figure}[ht!] % replace 't' with 'b' to force it to \centering
@@ -185,7 +193,7 @@ difference for 33 GWD/MTU than 51 GWD/MTU.
 \begin{figure}[htb] % replace 't' with 'b' to force it to be on the bottom
         \includegraphics[height=0.30\textheight]{absolute_diff_all_33}
         \caption{The absolute difference between spent fuel mass calculated by \gls{UNFSTANDARDS} \gls{UDB} and \Cyclus for each isotope for 33 GWD/MTU burnup. Positive difference indicates \Cyclus mass estimate is larger.}
-        \label{fig:absolute}
+    \label{fig:absolute_diff_all_33}
 \end{figure}
 
 
